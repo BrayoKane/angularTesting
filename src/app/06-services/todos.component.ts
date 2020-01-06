@@ -1,17 +1,18 @@
 
-import { TodoService } from './todo.service'
+import { TodoService } from './todo.service';
+import {OnInit} from '@angular/core';
 
-export class TodosComponent { 
-  todos: any[] = [];
-  message; 
+export class TodosComponent implements OnInit {
+  todos = [];
+  message;
 
   constructor(private service: TodoService) {}
 
-  ngOnInit() { 
-    this.service.getTodos().subscribe(t => this.todos = t);
+  ngOnInit() {
+    this.service.getTodos().subscribe(t => this.todos.push(t));
   }
 
-  add() { 
+  add() {
     var newTodo = { title: '... ' };
     this.service.add(newTodo).subscribe(
       t => this.todos.push(t),
@@ -19,7 +20,8 @@ export class TodosComponent {
   }
 
   delete(id) {
-    if (confirm('Are you sure?'))
+    if (confirm('Are you sure?')) {
       this.service.delete(id).subscribe();
-  }  
+    }
+  }
 }

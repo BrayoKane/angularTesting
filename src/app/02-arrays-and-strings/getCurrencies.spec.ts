@@ -1,4 +1,11 @@
+import { getCurrencies } from './getCurrencies';
 
-export function getCurrencies() { 
-  return ['USD', 'AUD', 'EUR'];
-}
+describe('greet', () => {
+  it('should return the supported currencies', () => {
+    const result = getCurrencies();
+    expect(result).toContain('USD');
+    expect(result).toContain('AUD');
+    expect(result).toContain('EUR');
+  });
+});
+

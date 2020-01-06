@@ -1,4 +1,9 @@
+import { greet } from './greet';
 
-export function greet(name) {
-  return 'Welcome ' + name;
-}
+describe('greet', () => {
+  it('should include the name in the message', () => {
+    const result = greet('Oti');
+    expect(result).toContain('Oti');
+  });
+});
+
